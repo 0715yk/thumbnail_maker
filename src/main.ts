@@ -1,7 +1,5 @@
 import "./style.css";
 
-const thumbnailTemplate = document.getElementById("thumbnail-preview");
-
 const inputTitle = document.querySelector(".input-title");
 const inputSubTitle = document.querySelector(".input-subtitle");
 const inputContents = document.querySelector(".input-contents");
