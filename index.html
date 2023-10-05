@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <article id="app">
+      <header>
+        <h1># Velog Thumbnail Maker</h1>
+        <p>
+          <a href="https://velog.io/@0715yk" target="_blank"
+            >YONGKINI's Velog</a
+          >
+          Thumbnail Maker
+        </p>
+      </header>
+      <section id="thumbnail-preview">
+        <ul class="render-list">
+          <li class="render title">제목을 입력하세요</li>
+          <li class="render subtitle">부제목을 입력하세요</li>
+          <li class="render contents">컨텐츠를 입력하세요</li>
+        </ul>
+      </section>
+      <section id="render-inputs">
+        <input
+          class="render-input input-title"
+          type="text"
+          placeholder="> 제목을 입력하세요"
+        />
+        <input
+          class="render-input input-subtitle"
+          type="text"
+          placeholder="> 부제목을 입력하세요"
+        />
+        <input
+          class="render-input input-contents"
+          type="text"
+          placeholder="> 컨텐츠를 입력하세요"
+        />
+      </section>
+    </article>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
