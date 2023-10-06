@@ -125,7 +125,6 @@ backroundPickBtns.forEach((btn) => {
       case "gradient":
         const color = getGradient();
         document.body.style.background = color;
-        console.log(color);
         previewDiv.style.background = color;
         break;
       case "solid-color":
@@ -135,6 +134,8 @@ backroundPickBtns.forEach((btn) => {
         break;
       case "image-url":
         const url = prompt("이미지 URL을 입력해주세요") as string;
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
         void importImage(url);
         break;
     }
@@ -148,11 +149,12 @@ exportBtn?.addEventListener("click", function () {
   ) as HTMLDivElement;
 
   html2canvas(previewDiv, { allowTaint: true }).then(function (canvas) {
-    var link = document.createElement("a");
+    const link = document.createElement("a");
     document.body.appendChild(link);
     link.download = "html_image.jpg";
     link.href = canvas.toDataURL();
     link.target = "_blank";
     link.click();
+    document.body.removeChild(link);
   });
 });
