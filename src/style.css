@@ -18,6 +18,9 @@ body {
   padding: 0;
   display: grid;
   place-items: center;
+  background: skyblue;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #app {
@@ -26,6 +29,7 @@ body {
   background: #ffffff;
   margin: 0 auto;
   width: 768px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 #app header {
@@ -56,6 +60,8 @@ body {
   width: 768px;
   height: 402px;
   background: skyblue;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .render-list {
@@ -110,4 +116,95 @@ body {
   font-size: 16px;
   font-weight: 400;
   padding-left: 14px;
+}
+
+#select-background-part {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  border-top: 1px solid #cacaca;
+  border-bottom: 1px solid #cacaca;
+  height: 70px;
+  line-height: 68px;
+}
+
+#select-background-btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.select-background {
+  font-size: 16px;
+  font-weight: 400;
+  width: 192px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+
+  cursor: pointer;
+  position: relative;
+  transition: 0.4s;
+}
+
+.select-background:active {
+  transform: scale(1.2);
+  transition: 0.2s;
+}
+
+.select-background > label {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.radioButton[type="radio"] + button:hover {
+  background-color: #3b45ff;
+  color: #fff;
+}
+
+.radioButton[type="radio"]:checked + button {
+  background-color: #3b45ff;
+  color: #fff;
+}
+
+.radioButton[type="radio"]:checked + button:hover {
+  opacity: 0.6;
+}
+
+.radioButton[type="radio"] {
+  display: none;
+}
+
+section:has(#export-btn) {
+  display: grid;
+  place-items: center;
+  margin-top: 50px;
+}
+
+#export-btn {
+  width: 192px;
+  height: 40px;
+  border: none;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+}
+
+#export-btn:hover {
+  background-color: #3b45ff;
+  color: #fff;
+  transition: 0.4s;
 }
