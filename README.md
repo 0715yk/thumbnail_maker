@@ -1,6 +1,6 @@
 # Thumbnail Maker를 사용해보세요!
 
-## 배포 링크 확인하기 : [[Vercel 배포 링크로 이동하기](https://github.com/0715yk/healthapp_be)](https://velog-thumbnail-maker.vercel.app/)
+## 배포 링크 확인하기 : https://velog-thumbnail-maker.vercel.app/
 --- 
 # 매일 매일 어떤 벨로그 썸네일을 쓸지 고민하셨나요?
 ![image](https://github.com/0715yk/thumbnail_maker/assets/68838884/d388b512-f1d2-4766-aa09-87fecd590199)
