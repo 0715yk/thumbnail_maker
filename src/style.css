@@ -21,6 +21,36 @@ body {
   background: skyblue;
 }
 
+p {
+  display: flex;
+  align-items: center;
+  position: relaive;
+}
+
+p > span {
+  margin-left: 12px;
+}
+
+#velog-link {
+  background-color: rgb(48, 203, 155);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: 192px;
+  height: 40px;
+  place-items: center;
+  display: grid;
+  box-sizing: border-box;
+  transition: 0.4s;
+}
+
+#velog-link:hover {
+  background-color: #fff;
+  color: rgb(48, 203, 155);
+  border: 1px solid rgb(48, 203, 155);
+  box-sizing: border-box;
+}
+
 #wrapper {
   position: absolute;
   top: 0;
@@ -45,7 +75,7 @@ body {
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
-  padding: 30px 0;
+  padding: 30px 15px 0 0;
 }
 
 #app h1 {
@@ -78,10 +108,6 @@ body {
   color: #fff;
   text-align: center;
   padding: 0;
-}
-
-.render {
-  color: rgb(255, 255, 255);
 }
 
 .title {
@@ -191,27 +217,85 @@ body {
   display: none;
 }
 
+.checkboxBtn[type="checkbox"] {
+  display: none;
+}
+
+.checkboxBtn[type="checkbox"] + button:hover {
+  background-color: #3b45ff;
+  color: #fff;
+}
+
+.checkboxBtn[type="checkbox"]:checked + button {
+  background-color: #3b45ff;
+  color: #fff;
+}
+
+.checkboxBtn[type="checkbox"]:checked + button:hover {
+  opacity: 0.6;
+}
+
 section:has(#export-btn) {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
   margin-top: 50px;
 }
 
-#export-btn {
+.submit-btn {
   width: 192px;
   height: 40px;
   border: none;
   font-size: 16px;
   font-weight: 400;
   cursor: pointer;
-  border-radius: 20px;
+
   display: grid;
   place-items: center;
   box-sizing: border-box;
 }
 
-#export-btn:hover {
+.submit-btn:hover {
   background-color: #3b45ff;
   color: #fff;
   transition: 0.4s;
+}
+
+.select-section {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid #cacaca;
+  height: 70px;
+  line-height: 68px;
+}
+
+.select-section-btn {
+  font-size: 16px;
+  font-weight: 400;
+  width: 192px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+
+  cursor: pointer;
+  position: relative;
+  transition: 0.4s;
+}
+
+.select-section-btn > label {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.select-section span {
+  font-weight: 800;
 }

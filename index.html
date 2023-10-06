@@ -11,47 +11,82 @@
 
 <body>
   <div id="wrapper">
-  <article id="app">
-    <header>
-      <h1># Velog Thumbnail Maker</h1>
-      <p>
-        <a href="https://velog.io/@0715yk" target="_blank">YONGKINI's Velog</a>
-        Thumbnail Maker
-      </p>
-    </header>
-    <section id="thumbnail-preview">
-      <ul class="render-list">
-        <li class="render title">제목을 입력하세요</li>
-        <li class="render subtitle">부제목을 입력하세요</li>
-        <li class="render contents">컨텐츠를 입력하세요</li>
-      </ul>
-    </section>
-    <section id="render-inputs">
-      <input class="render-input input-title" type="text" placeholder="> 제목을 입력하세요" />
-      <input class="render-input input-subtitle" type="text" placeholder="> 부제목을 입력하세요" />
-      <input class="render-input input-contents" type="text" placeholder="> 컨텐츠를 입력하세요" />
-    </section>
-    <section id="select-background-part">
-      <span class="select-background-alert">배경을 선택하세요</span>
-      <div id="select-background-btns">
-        <input name="background-pick" class="radioButton" id="gradient" type="radio"></input>
-        <button class="select-background" id="gradient">
-          <label for="gradient">랜덤 그라디언트</label>
-        </button>
-        <input name="background-pick" class="radioButton" id="solid-color" type="radio"></input>
-        <button class="select-background" id="solid-color">
-          <label for="solid-color">랜덤 단색</label>
-        </button>
-        <input name="background-pick" class="radioButton" id="image-url" type="radio"></input>
-        <button class="select-background" id="image-url">
-          <label for="image-url">이미지 URL</label>
-        </button>
-      </div>
-    </section>
-    <section>
-      <button id="export-btn">이미지로 추출</button>
-    </section>
-  </article></div>
+    <article id="app">
+      <header>
+        <h1># Velog Thumbnail Maker</h1>
+        <p>
+          <a id="velog-link" href="https://velog.io/@0715yk" target="_blank">Yongkini's Velog</a>
+          <span>Thumbnail Maker</span>
+        </p>
+      </header>
+      <section id="thumbnail-preview">
+        <ul class="render-list">
+          <li class="render title">제목을 입력하세요</li>
+          <li class="render subtitle">부제목을 입력하세요</li>
+          <li class="render contents">컨텐츠를 입력하세요</li>
+        </ul>
+      </section>
+      <section id="render-inputs">
+        <input class="render-input input-title" type="text" placeholder="> 제목을 입력하세요" />
+        <input class="render-input input-subtitle" type="text" placeholder="> 부제목을 입력하세요" />
+        <input class="render-input input-contents" type="text" placeholder="> 컨텐츠를 입력하세요" />
+      </section>
+      <section class="select-section" id="select-background-part">
+        <span class="select-background-alert">배경을 선택하세요</span>
+        <div id="select-background-btns">
+          <input name="background-pick" class="radioButton" id="gradient" type="radio"></input>
+          <button class="select select-background" id="gradient">
+            <label for="gradient">랜덤 그라디언트</label>
+          </button>
+          <input name="background-pick" class="radioButton" id="solid-color" type="radio"></input>
+          <button class="select select-background" id="solid-color">
+            <label for="solid-color">랜덤 단색</label>
+          </button>
+          <input name="background-pick" class="radioButton" id="image-url" type="radio"></input>
+          <button class="select select-background" id="image-url">
+            <label for="image-url">이미지 URL</label>
+          </button>
+        </div>
+      </section>
+      <section class="select-section">
+        <span class="select-background-alert">구성 요소 선택</span>
+        <div id="select-background-btns">
+          <input name="background-pick" class="radioButton" id="title-subtitle-contents" type="radio"></input>
+          <button class="select select-section-btn" id="title-subtitle-contents">
+            <label for="title-subtitle-contents">제목 / 부제목 / 컨텐츠</label>
+          </button>
+          <input name="background-pick" class="radioButton" id="title-subtitle" type="radio"></input>
+          <button class="select select-section-btn" id="title-subtitle">
+            <label for="title-subtitle">제목 / 부제목</label>
+          </button>
+          <input name="background-pick" class="radioButton" id="only-title" type="radio"></input>
+          <button class="select select-section-btn" id="only-title">
+            <label for="only-title">제목만</label>
+          </button>
+        </div>
+      </section>
+      <section class="select-section">
+        <span class="select-background-alert">텍스트 스타일 변경</span>
+        <div id="select-background-btns">
+          <input name="background-pick" class="checkboxBtn" id="text-shadow" type="checkbox"></input>
+          <button class="select select-section-btn" id="text-shadow">
+            <label for="text-shadow">텍스트 그림자 효과</label>
+          </button>
+          <input name="background-pick" class="checkboxBtn" id="text-color-reversal" type="checkbox"></input>
+          <button class="select select-section-btn" id="text-color-reversal">
+            <label for="text-color-reversal">텍스트 색상 반전</label>
+          </button>
+          <input name="background-pick" class="checkboxBtn" id="title-size-smaller" type="checkbox"></input>
+          <button class="select select-section-btn" id="title-size-smaller">
+            <label for="title-size-smaller">제목 크기 조절</label>
+          </button>
+        </div>
+      </section>
+      <section> 
+        <button class="submit-btn" id="export-btn">이미지로 추출</button>
+      </section>
+    </article>
+  </div>
   <script type="module" src="/src/main.ts"></script>
 </body>
 

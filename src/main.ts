@@ -113,7 +113,7 @@ async function importImage(src: string) {
   document.body.style.backgroundImage = `url(${url})`;
 }
 
-const backroundPickBtns = document.querySelectorAll(".select-background");
+const backroundPickBtns = document.querySelectorAll(".select");
 backroundPickBtns.forEach((btn) => {
   btn.addEventListener("click", function (e) {
     const target = e.target as HTMLLabelElement;
@@ -121,6 +121,11 @@ backroundPickBtns.forEach((btn) => {
     const previewDiv = document.querySelector(
       "#thumbnail-preview"
     ) as HTMLDivElement;
+    const lists = document.querySelectorAll(".render");
+    const renderList = document.querySelector(
+      ".render-list"
+    ) as HTMLUListElement;
+
     switch (targetId) {
       case "gradient":
         const color = getGradient();
@@ -134,9 +139,99 @@ backroundPickBtns.forEach((btn) => {
         break;
       case "image-url":
         const url = prompt("이미지 URL을 입력해주세요") as string;
-        document.body.style.backgroundRepeat = "no-repeat";
-        document.body.style.backgroundSize = "cover";
-        void importImage(url);
+        const RegExp =
+          /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+        if (RegExp.test(url)) {
+          document.body.style.backgroundRepeat = "no-repeat";
+          document.body.style.backgroundSize = "cover";
+          void importImage(url);
+        } else {
+          alert("정상적인 URL 포맷이 아닙니다.");
+        }
+        break;
+      case "title-subtitle-contents":
+        lists.forEach((list) => {
+          if (list.classList.contains("subtitle")) {
+            const listElement = list as HTMLLIElement;
+            listElement.style.display = "inline-block";
+          } else {
+            const listElement = list as HTMLLIElement;
+            listElement.style.display = "block";
+          }
+        });
+        break;
+      case "title-subtitle":
+        lists.forEach((list) => {
+          const listElement = list as HTMLLIElement;
+          if (list.classList.contains("contents")) {
+            listElement.style.display = "none";
+          } else if (list.classList.contains("subtitle")) {
+            listElement.style.display = "inline-block";
+          } else {
+            listElement.style.display = "block";
+          }
+        });
+        break;
+      case "only-title":
+        lists.forEach((list) => {
+          const listElement = list as HTMLLIElement;
+          if (list.classList.contains("title")) {
+            listElement.style.display = "block";
+          } else {
+            listElement.style.display = "none";
+          }
+        });
+        break;
+      case "text-shadow":
+        const textShadowInput = document.querySelector(
+          "#text-shadow"
+        ) as HTMLInputElement;
+        if (textShadowInput.checked) {
+          previewDiv.style.textShadow = "none";
+        } else {
+          previewDiv.style.textShadow = "rgba(0, 0, 0, 0.4) 2px 2px 4px";
+        }
+        break;
+      case "text-color-reversal":
+        const textColorReversalInput = document.querySelector(
+          "#text-color-reversal"
+        ) as HTMLInputElement;
+        const subTitle = document.querySelector(
+          ".subtitle"
+        ) as HTMLInputElement;
+
+        if (textColorReversalInput.checked) {
+          renderList.style.color = "#ffffff";
+          subTitle.style.borderTop = "1px solid #ffffff";
+        } else {
+          renderList.style.color = "black";
+          subTitle.style.borderTop = "1px solid black";
+        }
+        break;
+      case "title-size-smaller":
+        const textSizeSmaller = document.querySelector(
+          "#title-size-smaller"
+        ) as HTMLInputElement;
+
+        if (textSizeSmaller.checked) {
+          lists.forEach((list) => {
+            const render = list as HTMLLIElement;
+            if (render.classList.contains("title")) {
+              render.style.fontSize = "54px";
+            } else {
+              render.style.fontSize = "24px";
+            }
+          });
+        } else {
+          lists.forEach((list) => {
+            const render = list as HTMLLIElement;
+            if (render.classList.contains("title")) {
+              render.style.fontSize = "46px";
+            } else {
+              render.style.fontSize = "22px";
+            }
+          });
+        }
         break;
     }
   });
