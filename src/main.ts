@@ -108,9 +108,13 @@ async function importImage(src: string) {
   }
 
   context?.drawImage(imageElement, x, y, width, height);
+  const wrapper = document.querySelector("#wrapper") as HTMLDivElement;
+  const blurWrapper = document.querySelector("#blurWrapper") as HTMLDivElement;
   const url = await canvas.toDataURL("image/png");
   previewDiv.style.backgroundImage = `url(${url})`;
-  document.body.style.backgroundImage = `url(${url})`;
+  wrapper.style.background = `url(${url}) no-repeat`;
+  wrapper.style.backgroundSize = `cover`;
+  blurWrapper.style.height = `${wrapper.clientHeight}px`;
 }
 
 const backroundPickBtns = document.querySelectorAll(".select");
@@ -125,16 +129,17 @@ backroundPickBtns.forEach((btn) => {
     const renderList = document.querySelector(
       ".render-list"
     ) as HTMLUListElement;
+    const wrapper = document.querySelector("#wrapper") as HTMLDivElement;
 
     switch (targetId) {
       case "gradient":
         const color = getGradient();
-        document.body.style.background = color;
+        wrapper.style.background = color;
         previewDiv.style.background = color;
         break;
       case "solid-color":
         const hex = "#" + Math.round(Math.random() * 0xffffff).toString(16);
-        document.body.style.background = hex;
+        wrapper.style.background = hex;
         previewDiv.style.background = hex;
         break;
       case "image-url":
@@ -142,8 +147,6 @@ backroundPickBtns.forEach((btn) => {
         const RegExp =
           /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
         if (RegExp.test(url)) {
-          document.body.style.backgroundRepeat = "no-repeat";
-          document.body.style.backgroundSize = "cover";
           void importImage(url);
         } else {
           alert("정상적인 URL 포맷이 아닙니다.");
@@ -253,3 +256,8 @@ exportBtn?.addEventListener("click", function () {
     document.body.removeChild(link);
   });
 });
+
+if (/Android|iPhone/i.test(navigator.userAgent)) {
+  document.body.innerHTML =
+    "<div>이 서비스는 모바일에서는 동작하지 않습니다.</div>";
+}
