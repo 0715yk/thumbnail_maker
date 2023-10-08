@@ -144,13 +144,7 @@ backroundPickBtns.forEach((btn) => {
         break;
       case "image-url":
         const url = prompt("이미지 URL을 입력해주세요") as string;
-        const RegExp =
-          /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-        if (RegExp.test(url)) {
-          void importImage(url);
-        } else {
-          alert("정상적인 URL 포맷이 아닙니다.");
-        }
+        void importImage(url);
         break;
       case "title-subtitle-contents":
         lists.forEach((list) => {
