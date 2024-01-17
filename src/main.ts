@@ -65,6 +65,7 @@ function getGradient() {
 function loadImage(path: string): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const img = new Image();
+    img.crossOrigin = "Anonymous";
     img.src = path;
     img.onload = () => {
       resolve(img);
