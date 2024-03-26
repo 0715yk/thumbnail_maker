@@ -62,18 +62,11 @@ function getGradient() {
   return gradient;
 }
 
-function loadImage(path: string): Promise<HTMLImageElement> {
+function imageLoadPromise(image:HTMLImageElement, base64: string) {
   return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.crossOrigin = "Anonymous";
-    img.src = path;
-    img.onload = () => {
-      resolve(img);
-    };
-    img.onerror = (e) => {
-      alert("가져올 수 없는 이미지 입니다.");
-      reject(e);
-    };
+    image.onload = resolve;
+    image.onerror = () => reject(new Error('Failed to load image'));
+    image.src = base64;
   });
 }
 
@@ -83,7 +76,14 @@ async function importImage(src: string) {
   const previewDiv = document.querySelector(
     "#thumbnail-preview"
   ) as HTMLDivElement;
-  const imageElement = (await loadImage(src)) as HTMLImageElement;
+    const response = await fetch(`//api.allorigins.win/get?url=${encodeURIComponent(src)}`, { method: "GET" });
+  const data = await response['json']();
+  
+  const base64 = data.contents;
+  const imageElement = new Image();
+
+  await imageLoadPromise(imageElement, base64);
+
   const { width: imageW, height: imageH } = imageElement;
   const stageW = 768;
   const stageH = 402;
